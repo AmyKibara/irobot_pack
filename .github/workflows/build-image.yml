@@ -7,7 +7,7 @@ on:
 
 jobs:
   build-and-push:
-    runs-on: ubuntu-24.04-arm64 # Uses native GitHub ARM64 servers
+    runs-on: ubuntu-24.04-arm # Uses native GitHub ARM64 servers
     
     steps:
       - name: Checkout Repository
