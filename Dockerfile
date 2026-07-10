@@ -11,13 +11,13 @@ RUN apt-get update && apt-get install -y \
     git \
     && rm -rf /var/lib/apt/lists/*
 
-# Set up ROS2 workspace
+# Set up ROS2 workspace and clone the source code natively
 WORKDIR /benchmark_ws/src
-COPY . /benchmark_ws/src/ros2-performance
+RUN git clone https://github.com/irobot-ros/ros2-performance.git
 
 WORKDIR /benchmark_ws
 
-# FIX: Limit executors and parallel jobs to prevent OOM on 4GB RAM instances
+# Limit executors and parallel jobs to prevent OOM on 4GB RAM instances
 RUN . /opt/ros/jazzy/setup.sh && \
     colcon build \
     --executor sequential \
